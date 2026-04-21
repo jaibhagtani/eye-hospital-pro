@@ -12,7 +12,7 @@ const DoctorSelector = ({ specialty, onDoctorSelect, onBack, lang }) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/doctors?specialty=${specialty}`
+          `${process.env.REACT_APP_API_URL}/api/doctors?specialty=${specialty}`
         );
         const list = Array.isArray(response.data)
           ? response.data

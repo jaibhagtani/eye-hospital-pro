@@ -23,7 +23,7 @@ const PatientRegistrationForm = ({ lang, onSubmit, onBack }) => {
     setDoctorError('');
 
     axios
-      .get(`http://localhost:5000/api/doctors?specialty=${formData.specialty}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/doctors?specialty=${formData.specialty}`)
       .then(res => {
         console.log('✅ Doctor API raw response:', res.data);
 
