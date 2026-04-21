@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Patient = require('./models/Patient');
+const Patient = require('./models/patient');
 const Doctor = require('./models/Doctor');
 const Appointment = require('./models/Appointment');
 

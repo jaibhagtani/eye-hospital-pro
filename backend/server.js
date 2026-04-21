@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const Patient     = require('./models/Patient');
+const Patient     = require('./models/patient');
 const Doctor      = require('./models/Doctor');
 const Appointment = require('./models/Appointment');
 
