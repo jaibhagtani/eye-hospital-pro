@@ -6,7 +6,7 @@ import SpecialtySelector from './components/SpecialtySelector';
 import DoctorSelector from './components/DoctorSelector';
 import './App.css';
 
-const API = 'http://localhost:5000';
+const API = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 function App() {
   const [step, setStep] = useState('language');
