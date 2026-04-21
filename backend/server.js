@@ -11,10 +11,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ─── MongoDB Connection ───────────────────────────────────────────────────────
 const MONGO_URI = process.env.MONGO_URL;
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB'))
-  .catch((err) => { console.error('❌ MongoDB Error:', err.message); process.exit(1); });
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('✅ Connected to MongoDB');
+  } catch (err) {
+    console.error('❌ MongoDB Connection Error:', err);
+    console.log('🔄 Retrying connection in 5 seconds...');
+    setTimeout(connectDB, 5000);
+  }
+};
+
+connectDB();
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
