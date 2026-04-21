@@ -15,11 +15,13 @@ app.use(express.json());
 const MONGO_URI = process.env.MONGO_URL;
 
 const connectDB = async () => {
+  console.log(process.env.MONGO_URL);
   try {
     await mongoose.connect(MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+
     console.log('✅ Connected to MongoDB');
   } catch (err) {
     console.error('❌ MongoDB Connection Error:', err);
